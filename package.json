@@ -1,0 +1,11 @@
+{
+  "name": "november",
+  "private": true,
+  "description": "November 中国手作甄选 — 演示原型",
+  "scripts": {
+    "sync": "node scripts/sync-catalog.js",
+    "dev": "npm run dev --prefix web",
+    "build": "npm run build --prefix web",
+    "check:mp": "node scripts/check-miniprogram.js"
+  }
+}

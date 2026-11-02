@@ -1,0 +1,64 @@
+<view class="page sub" wx:if="{{missing}}">
+  <view class="h1">没有找到这件器物</view>
+</view>
+<view class="page sub" wx:elif="{{product}}">
+  <swiper class="gallery" indicator-dots circular="{{product.images.length > 1}}">
+    <swiper-item wx:for="{{product.images}}" wx:key="*this">
+      <image src="{{item}}" mode="aspectFill" />
+    </swiper-item>
+  </swiper>
+  <view class="kicker" style="margin-top: 24rpx;">{{creator.city}} · {{creator.craft}}</view>
+  <view class="h1" style="font-size: 44rpx; font-weight: 500;">{{product.title}}</view>
+  <view style="font-size: 40rpx; font-weight: 600; margin-top: 8rpx;">{{priceText}}</view>
+  <view class="lede">{{product.summary}}</view>
+  <view class="muted">{{product.edition}} · {{product.leadTime}}</view>
+
+  <view class="row"><view class="h2">认证说明</view></view>
+  <view class="cert-row" wx:for="{{certs}}" wx:key="id">
+    <view class="name">{{item.label}}</view>
+    <view>
+      <view>{{item.detail}}</view>
+      <view class="small">{{item.summary}}</view>
+    </view>
+  </view>
+
+  <view class="row"><view class="h2">关于这件</view></view>
+  <view class="body">{{product.description}}</view>
+  <view class="spec" wx:for="{{product.specs}}" wx:key="label">
+    <text class="muted">{{item.label}}</text>
+    <text>{{item.value}}</text>
+  </view>
+
+  <view class="creator-card" bindtap="onCreator">
+    <image src="{{creator.avatar}}" mode="aspectFill" />
+    <view>
+      <view style="font-weight: 600;">{{creator.name}}</view>
+      <view class="muted">{{creator.city}} · {{creator.craft}} · {{creator.years}} 年</view>
+      <view class="small">{{creator.headline}}</view>
+    </view>
+  </view>
+
+  <view class="rights">
+    <view class="title">{{rights.returnPolicy}}</view>
+    <view>{{rights.body}}</view>
+    <view class="title" style="margin-top: 12rpx;">{{rights.protection}}</view>
+    <view class="small">{{rights.protectionNote}}</view>
+  </view>
+
+  <view class="buybar">
+    <view class="btn secondary" bindtap="openConsult">咨询创作者</view>
+    <view class="btn primary" bindtap="onCart">加入购物袋</view>
+  </view>
+  <view style="text-align: right; margin-top: 16rpx; text-decoration: underline;" bindtap="onHeart">
+    {{wished ? '已收藏' : '收藏'}}
+  </view>
+
+  <view class="mask" wx:if="{{consultOpen}}" bindtap="closeConsult">
+    <view class="sheet" catchtap="noop">
+      <view class="h2">咨询{{creator.name}}</view>
+      <view class="small">演示原型不会真正发送。</view>
+      <textarea value="{{note}}" bindinput="onNote" placeholder="想问尺寸、釉色、工期，或定制的可能" />
+      <view class="btn primary" bindtap="sendConsult">发送咨询</view>
+    </view>
+  </view>
+</view>

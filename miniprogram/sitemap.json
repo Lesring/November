@@ -1,0 +1,4 @@
+{
+  "desc": "演示原型，不提交收录",
+  "rules": [{ "action": "disallow", "page": "*" }]
+}

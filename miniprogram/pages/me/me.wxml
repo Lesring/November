@@ -1,0 +1,57 @@
+<view class="page">
+  <view class="profile">
+    <view class="avatar-fallback">N</view>
+    <view>
+      <view class="h1" style="font-size: 48rpx;">访客</view>
+      <view class="muted">演示账号 · 未登录</view>
+    </view>
+  </view>
+
+  <view class="banner" bindtap="goMember">
+    <view>
+      <view style="font-weight: 600;">会员尚未加入</view>
+      <view class="muted">手作会员 ¥199 / 年 · 新品提前可见</view>
+    </view>
+    <view class="link">去看看</view>
+  </view>
+
+  <view class="row">
+    <view class="h2">购物袋</view>
+    <view class="muted">{{count}} 件</view>
+  </view>
+  <view class="muted" wx:if="{{cart.length === 0}}">还是空的。在器物页可以加入，这里只做演示，不会结算。</view>
+  <view class="line" wx:for="{{cart}}" wx:key="id">
+    <image src="{{item.image}}" mode="aspectFill" data-id="{{item.id}}" bindtap="goProduct" />
+    <view class="grow" data-id="{{item.id}}" bindtap="goProduct">
+      <view style="font-weight: 600;">{{item.title}}</view>
+      <view class="muted">{{item.priceText}} · × {{item.qty}}</view>
+    </view>
+    <view class="muted" data-id="{{item.id}}" bindtap="onRemove">移除</view>
+  </view>
+
+  <view class="row">
+    <view class="h2">收藏</view>
+    <view class="muted">{{saved.length}} 件</view>
+  </view>
+  <view class="muted" wx:if="{{saved.length === 0}}">点器物照片上的心形，就会出现在这里。</view>
+  <view class="line" wx:for="{{saved}}" wx:key="id" data-id="{{item.id}}" bindtap="goProduct">
+    <image src="{{item.image}}" mode="aspectFill" />
+    <view class="grow">
+      <view style="font-weight: 600;">{{item.title}}</view>
+      <view class="muted">{{item.priceText}}</view>
+    </view>
+  </view>
+
+  <view class="rights">
+    <view class="title">{{rights.title}}</view>
+    <view>{{rights.returnPolicy}}</view>
+    <view style="margin-top: 8rpx;">{{rights.body}}</view>
+    <view class="title" style="margin-top: 12rpx;">{{rights.protection}}</view>
+  </view>
+
+  <view class="panel">
+    <view class="h2">关于 November</view>
+    <view class="body">November 想成为中国手作的甄选市集。主流平台上，仿货和铺货常常把真手作的价格打下去。我们用材料认证、手作认证和原创登记，把谁做的、用什么做的、造型有没有被登记，写在器物旁边。</view>
+  </view>
+  <view class="foot">演示原型 · 无支付 · 无登录</view>
+</view>

@@ -1,0 +1,54 @@
+<view class="page">
+  <view class="wordmark">November</view>
+  <view class="tag">十一月 · {{brand.tagline}}</view>
+  <view class="h1">{{brand.promise}}</view>
+  <view class="lede">{{brand.lede}}</view>
+  <view class="search">
+    <input placeholder="搜索器物、材质或创作者" confirm-type="search" bindinput="onKeyword" bindconfirm="onSearch" />
+    <view class="orb" bindtap="onSearch">搜</view>
+  </view>
+
+  <scroll-view class="chips" scroll-x>
+    <view class="chip {{categoryId === 'all' ? 'on' : ''}}" data-id="all" bindtap="onChip">全部</view>
+    <view
+      class="chip {{categoryId === item.id ? 'on' : ''}}"
+      wx:for="{{categories}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="onChip"
+    >{{item.name}}</view>
+  </scroll-view>
+
+  <view class="row">
+    <view class="h2">策展专题</view>
+    <view bindtap="onMore">查看全部</view>
+  </view>
+  <scroll-view scroll-x class="scroller">
+    <view class="editorial" wx:for="{{collections}}" wx:key="id" data-cat="{{item.categoryId}}" bindtap="onCollection">
+      <image src="{{item.image}}" mode="aspectFill" />
+      <view class="kicker">{{item.kicker}}</view>
+      <view class="h3">{{item.title}}</view>
+      <view class="muted">{{item.subtitle}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="row"><view class="h2">本季创作者</view></view>
+  <scroll-view scroll-x class="scroller">
+    <view class="creator" wx:for="{{creators}}" wx:key="id" data-id="{{item.id}}" bindtap="onCreator">
+      <image src="{{item.avatar}}" mode="aspectFill" />
+      <view>{{item.name}}</view>
+      <view class="muted">{{item.craft}} · {{item.city}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="row">
+    <view class="h2">甄选手作</view>
+    <view bindtap="onMore">在发现中筛选</view>
+  </view>
+  <view class="grid">
+    <view class="cell" wx:for="{{products}}" wx:key="id">
+      <product-card product="{{item}}" bind:open="onOpen" bind:heart="onHeart" />
+    </view>
+  </view>
+  <view class="foot">手作商品不支持无理由退货 · 原创作品受保护</view>
+</view>
