@@ -340,6 +340,14 @@ h2 { font-size: 22px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.
   overflow: hidden;
   background: var(--surface-strong);
 }
+.gallery img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+}
 .gal-btn {
   position: absolute;
   top: 50%;
