@@ -1,0 +1,7 @@
+node_modules
+dist
+.DS_Store
+*.local
+miniprogram/project.private.config.json
+.idea
+.vscode

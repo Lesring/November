@@ -1,0 +1,28 @@
+.tabbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  background: #fff;
+  border-top: 1rpx solid #ebebeb;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 14rpx 0 12rpx;
+  color: #6a6a6a;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+.tab.on { color: #222; font-weight: 600; }
+.dot {
+  width: 8rpx;
+  height: 8rpx;
+  border-radius: 99rpx;
+  margin: 0 auto 8rpx;
+  background: transparent;
+}
+.tab.on .dot { background: #ff385c; }

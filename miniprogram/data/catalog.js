@@ -1,0 +1,618 @@
+/* 由 scripts/sync-catalog.js 从 shared/catalog.json 生成。请改 JSON 后重新运行，不要手改本文件。 */
+module.exports = {
+  "brand": {
+    "name": "November",
+    "nameZh": "十一月",
+    "tagline": "中国手作甄选",
+    "promise": "给还在认真做东西的人。",
+    "lede": "材料、工序与原创，写在每一件器物旁边。"
+  },
+  "categories": [
+    {
+      "id": "ceramic",
+      "name": "陶瓷"
+    },
+    {
+      "id": "wood",
+      "name": "木作"
+    },
+    {
+      "id": "weave",
+      "name": "编织"
+    },
+    {
+      "id": "silver",
+      "name": "银饰"
+    }
+  ],
+  "certifications": [
+    {
+      "id": "material",
+      "label": "材料认证",
+      "summary": "原料产地与主要成分已经核对。"
+    },
+    {
+      "id": "handmade",
+      "label": "手作认证",
+      "summary": "核心工序由创作者手工完成，而非批量代工。"
+    },
+    {
+      "id": "original",
+      "label": "原创登记",
+      "summary": "造型或纹样已做原创登记，便于追溯。"
+    }
+  ],
+  "rights": {
+    "title": "创作者权益",
+    "returnPolicy": "手作商品不支持无理由退货",
+    "body": "手作与定制商品不支持七天无理由退货。烧制、木作、编织和锻造留下的手工痕迹，不属于质量问题。若运输破损，请在签收后 48 小时内联系。",
+    "protection": "原创作品受保护",
+    "protectionNote": "原创造型与纹样在 November 登记。这里只做提示，不展示防复制技术。"
+  },
+  "collections": [
+    {
+      "id": "kiln",
+      "kicker": "策展专题",
+      "title": "窑火与釉色",
+      "subtitle": "景德镇小窑的秋季出窑，只留说得清泥和釉的器物。",
+      "image": "/images/potter.jpg",
+      "categoryId": "ceramic"
+    },
+    {
+      "id": "tea",
+      "kicker": "策展专题",
+      "title": "器以载茶",
+      "subtitle": "从瓶到盏，一套可以慢慢用旧的茶席。",
+      "image": "/images/bottle.jpg",
+      "categoryId": "ceramic"
+    },
+    {
+      "id": "loom",
+      "kicker": "策展专题",
+      "title": "织造的下午",
+      "subtitle": "从整经到下机，一匹布要走很久。",
+      "image": "/images/loom.jpg",
+      "categoryId": "weave"
+    }
+  ],
+  "creators": [
+    {
+      "id": "lin-wanci",
+      "name": "林晚瓷",
+      "city": "景德镇",
+      "craft": "陶瓷",
+      "years": 12,
+      "avatar": "/images/cups.jpg",
+      "cover": "/images/wheel.jpg",
+      "headline": "土要自己去挑，釉要自己试到天亮。",
+      "story": [
+        "林晚瓷在三宝蓬长大，家里两代人都跟窑有关。她不做批量白胎，只做自己能说清泥和釉从哪来的器物。",
+        "月白和雾蓝是工作室这些年试出来的釉。它们薄，但不是没有温度。火痕会留下来，每一窑都不一样。",
+        "拉坯、修坯、施釉和装窑都留在她自己手上。材料认证对她来说，就是把泥的产地写清楚。"
+      ],
+      "process": [
+        {
+          "image": "/images/wheel.jpg",
+          "caption": "拉坯。手要跟着泥走，不追求每只都一样圆。"
+        },
+        {
+          "image": "/images/bisque.jpg",
+          "caption": "素烧之后先看胎，再决定这只要不要上釉。"
+        },
+        {
+          "image": "/images/table.jpg",
+          "caption": "出窑后放在一起看釉色，留下的才会上架。"
+        }
+      ]
+    },
+    {
+      "id": "chen-musheng",
+      "name": "陈木生",
+      "city": "东阳",
+      "craft": "木作",
+      "years": 18,
+      "avatar": "/images/spoons.jpg",
+      "cover": "/images/woodroom.jpg",
+      "headline": "木头要留住原来的纹路，而不是盖住它。",
+      "story": [
+        "陈木生做了十八年东阳木作。他现在少做大件雕花，更多做茶则、勺子和可以每天拿起来的小器。",
+        "胡桃木和山核桃来自他认识的山里师傅，开料前会看含水率。表面只用木蜡，不用亮光漆。",
+        "手作认证看的是：这把勺子是不是他刨出来的，而不是机器铣完再修个边。"
+      ],
+      "process": [
+        {
+          "image": "/images/spoons.jpg",
+          "caption": "三把勺子，大小不同，木纹都留在表面。"
+        },
+        {
+          "image": "/images/woodroom.jpg",
+          "caption": "工作室尽量留白。做好的小器会在这里放几天，看是否开裂。"
+        }
+      ]
+    },
+    {
+      "id": "a-zhi",
+      "name": "阿织",
+      "city": "大理",
+      "craft": "编织",
+      "years": 9,
+      "avatar": "/images/weave.jpg",
+      "cover": "/images/linen.jpg",
+      "headline": "线是慢慢走的，布也该慢慢用旧。",
+      "story": [
+        "阿织在大理织布。染料多是植物，靛蓝、茜草，也有她自己试的茶染。她不接大货，一匹布从整经到下机常常要几周。",
+        "格子和条纹来自她登记过的几个小样。同样的纹，机器可以仿，经纬的松紧仿不像。",
+        "她希望买的人知道：手织会有轻微歪斜。那是线在手上的痕迹，不是次品。"
+      ],
+      "process": [
+        {
+          "image": "/images/weave.jpg",
+          "caption": "投梭与打纬。格子是在织的时候一点点长出来的。"
+        },
+        {
+          "image": "/images/linen.jpg",
+          "caption": "未染色的坯布。她会留一部分本色，不做后续染色。"
+        }
+      ]
+    },
+    {
+      "id": "su-yin",
+      "name": "苏银",
+      "city": "黔东南",
+      "craft": "银饰",
+      "years": 15,
+      "avatar": "/images/silver-spiral.jpg",
+      "cover": "/images/silver-collar.jpg",
+      "headline": "银要锤过，纹样才算是自己的。",
+      "story": [
+        "苏银在黔东南做银饰，跟家里的银匠学锻打和錾花。她既做可以日常戴的小件，也保留项圈这类更有仪式感的造型。",
+        "银料会写明成色。纹样在 November 做原创登记，避免被铺货店直接翻模。",
+        "她在意的不是一句“不能退货”，而是买的人愿意理解：手工银饰不该跟批量首饰用同一套规则。"
+      ],
+      "process": [
+        {
+          "image": "/images/silver-spiral.jpg",
+          "caption": "涡纹银片。尺寸和疏密是登记过的。"
+        },
+        {
+          "image": "/images/silver-collar.jpg",
+          "caption": "月牙项饰。表面有时间留下的颜色，不是电镀新品。"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "yuebai-vase",
+      "title": "月白细颈花器",
+      "price": 860,
+      "categoryId": "ceramic",
+      "creatorId": "lin-wanci",
+      "images": [
+        "/images/vases.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "细颈，薄釉，适合一支干枝。",
+      "description": "胎土来自景德镇三宝蓬。月白釉是工作室自己试出来的配方，烧成后偏冷，靠近窗边会更亮一点。瓶口收得很小，只够插一两支干花。",
+      "leadTime": "现货，3 日内发出",
+      "edition": "本季 8 件",
+      "specs": [
+        {
+          "label": "尺寸",
+          "value": "高约 18 cm"
+        },
+        {
+          "label": "口径",
+          "value": "约 2 cm"
+        },
+        {
+          "label": "材质",
+          "value": "高白泥 · 月白釉"
+        }
+      ],
+      "verification": {
+        "material": "胎土来自景德镇三宝蓬，釉料为工作室自配月白釉，留有配比记录。",
+        "handmade": "拉坯、修坯、施釉与装窑由林晚瓷本人完成。",
+        "original": "细颈曲线已登记，编号 NV-LC-2411。"
+      }
+    },
+    {
+      "id": "warm-cups",
+      "title": "暖白手作杯组",
+      "price": 328,
+      "categoryId": "ceramic",
+      "creatorId": "lin-wanci",
+      "images": [
+        "/images/cups.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "不高的杯子，壁上留着手的痕迹。",
+      "description": "一套四只。杯壁厚薄略有差别，端起来是暖的。透明釉很薄，能看见泥点。适合日常喝水，不适合洗碗机。",
+      "leadTime": "现货，3 日内发出",
+      "edition": "常备小批量",
+      "specs": [
+        {
+          "label": "口径",
+          "value": "约 7 cm"
+        },
+        {
+          "label": "数量",
+          "value": "一套四只"
+        },
+        {
+          "label": "材质",
+          "value": "高白泥 · 透明釉"
+        }
+      ],
+      "verification": {
+        "material": "高白泥与透明釉，原料批次可追溯。",
+        "handmade": "拉坯、修坯后浸釉，杯底修足由手工完成。",
+        "original": "杯型为工作室日常款，造型已登记 NV-LC-2304。"
+      }
+    },
+    {
+      "id": "bisque-cup",
+      "title": "素烧茶盏",
+      "price": 246,
+      "categoryId": "ceramic",
+      "creatorId": "lin-wanci",
+      "images": [
+        "/images/bisque.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "未施釉，给想看见泥本身的人。",
+      "description": "素烧会吸水，不宜长时间浸泡。使用前用茶汤养一养，盏壁会慢慢深下去。这是器物自己的变化，不是瑕疵。",
+      "leadTime": "现货，3 日内发出",
+      "edition": "本季 20 只",
+      "specs": [
+        {
+          "label": "口径",
+          "value": "约 8 cm"
+        },
+        {
+          "label": "高度",
+          "value": "约 5 cm"
+        },
+        {
+          "label": "材质",
+          "value": "高白泥 · 素烧"
+        }
+      ],
+      "verification": {
+        "material": "同一批三宝蓬高白泥，未添加色料。",
+        "handmade": "手拉坯后素烧，不再施釉。",
+        "original": "盏壁收分已登记，编号 NV-LC-2419。"
+      }
+    },
+    {
+      "id": "mist-plate",
+      "title": "雾蓝手作餐盘",
+      "price": 420,
+      "categoryId": "ceramic",
+      "creatorId": "lin-wanci",
+      "images": [
+        "/images/plates.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "边缘不追求正圆，釉色像一层薄雾。",
+      "description": "盘沿有轻微起伏，叠起来不会严丝合缝。雾蓝釉每窑深浅不同，照片最接近大部分成色，不能保证与实物完全一致。",
+      "leadTime": "约 7 日出窑后发出",
+      "edition": "每窑数量不同",
+      "specs": [
+        {
+          "label": "直径",
+          "value": "约 21 cm"
+        },
+        {
+          "label": "材质",
+          "value": "瓷土 · 雾蓝釉"
+        }
+      ],
+      "verification": {
+        "material": "釉色为工作室雾蓝方，不含外部贴花。",
+        "handmade": "手工成型，边缘保留轻微起伏。",
+        "original": "盘型与釉色组合已登记，编号 NV-LC-2402。"
+      }
+    },
+    {
+      "id": "bottle-set",
+      "title": "手作瓶与品杯",
+      "price": 560,
+      "categoryId": "ceramic",
+      "creatorId": "lin-wanci",
+      "images": [
+        "/images/bottle.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "一只小瓶，两只品杯，给一个人的茶。",
+      "description": "瓶身留有化妆土的颗粒。品杯偏小，适合闻香，不适合当水杯。三件一起烧，釉色会靠近，但不会完全相同。",
+      "leadTime": "现货，3 日内发出",
+      "edition": "本季 6 套",
+      "specs": [
+        {
+          "label": "瓶高",
+          "value": "约 16 cm"
+        },
+        {
+          "label": "组合",
+          "value": "瓶一只 · 品杯两只"
+        },
+        {
+          "label": "材质",
+          "value": "化妆土 · 透明釉"
+        }
+      ],
+      "verification": {
+        "material": "化妆土与透明釉，泥料产地已核对。",
+        "handmade": "瓶与杯均为手拉坯。",
+        "original": "组合造型已登记，编号 NV-LC-2415。"
+      }
+    },
+    {
+      "id": "ring-vase",
+      "title": "圆环白釉花器",
+      "price": 680,
+      "categoryId": "ceramic",
+      "creatorId": "lin-wanci",
+      "images": [
+        "/images/ring-vase.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "圆环中空，白釉很安静，适合放在低处。",
+      "description": "中空的圆环不好注浆，这只是手塑再修出来的。哑光白釉不反光，放干枝或单独放都可以。",
+      "leadTime": "约 10 日",
+      "edition": "本季 4 件",
+      "specs": [
+        {
+          "label": "直径",
+          "value": "约 22 cm"
+        },
+        {
+          "label": "材质",
+          "value": "白瓷土 · 哑光白釉"
+        }
+      ],
+      "verification": {
+        "material": "白瓷土与哑光白釉，原料记录可查。",
+        "handmade": "手工塑形，不是注浆批量件。",
+        "original": "圆环结构已登记，编号 NV-LC-2420。"
+      }
+    },
+    {
+      "id": "wood-spoons",
+      "title": "手刻木勺三件",
+      "price": 186,
+      "categoryId": "wood",
+      "creatorId": "chen-musheng",
+      "images": [
+        "/images/spoons.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "三把不同大小的勺子，木纹没有被漆盖住。",
+      "description": "胡桃木色差是木头自己的。表面是木蜡，用久了会更润，也可以再擦一层。不要长时间浸泡，也不要进洗碗机。",
+      "leadTime": "现货，3 日内发出",
+      "edition": "每组木纹不同",
+      "specs": [
+        {
+          "label": "长度",
+          "value": "约 12 / 16 / 22 cm"
+        },
+        {
+          "label": "材质",
+          "value": "胡桃木 · 山核桃 · 木蜡"
+        }
+      ],
+      "verification": {
+        "material": "胡桃木与山核桃，开料前记录含水率，表面木蜡，无亮光漆。",
+        "handmade": "刨、削、打磨由陈木生完成，不是铣床批量件。",
+        "original": "勺头曲线已登记，编号 NV-CM-2406。"
+      }
+    },
+    {
+      "id": "indigo-weave",
+      "title": "蓝白手织格纹",
+      "price": 520,
+      "categoryId": "weave",
+      "creatorId": "a-zhi",
+      "images": [
+        "/images/weave.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "蓝白格子，经纬是松的，会轻轻歪一点。",
+      "description": "靛蓝来自植物染。格子的比例是阿织登记过的小样。手织布洗涤时会稍稍缩水，建议冷水手洗。轻微歪斜是手工痕迹。",
+      "leadTime": "约 2 周",
+      "edition": "按匹，不重复开大货",
+      "specs": [
+        {
+          "label": "幅宽",
+          "value": "约 36 cm"
+        },
+        {
+          "label": "材质",
+          "value": "棉线 · 植物靛蓝"
+        }
+      ],
+      "verification": {
+        "material": "棉线，靛蓝为植物染，染料记录可查。",
+        "handmade": "整经、投梭、打纬在织机上手工完成。",
+        "original": "格子比例已登记，编号 NV-AZ-2409。"
+      }
+    },
+    {
+      "id": "natural-cloth",
+      "title": "本色亚麻坯布",
+      "price": 340,
+      "categoryId": "weave",
+      "creatorId": "a-zhi",
+      "images": [
+        "/images/linen.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade"
+      ],
+      "summary": "未染色的坯布，保留纤维本来的颜色。",
+      "description": "这一匹不做后续染色，给想自己植物染，或者就喜欢本色的人。布面有粗细不匀，这是留着的，不是漏检。",
+      "leadTime": "现货，5 日内发出",
+      "edition": "本季 3 匹",
+      "specs": [
+        {
+          "label": "状态",
+          "value": "未染色坯布"
+        },
+        {
+          "label": "材质",
+          "value": "亚麻"
+        }
+      ],
+      "verification": {
+        "material": "未做化学染色的亚麻坯布，批次在演示数据中已标注。",
+        "handmade": "织造为手工，布面可见轻微不匀。"
+      }
+    },
+    {
+      "id": "spiral-silver",
+      "title": "涡纹银饰一组",
+      "price": 1280,
+      "categoryId": "silver",
+      "creatorId": "su-yin",
+      "images": [
+        "/images/silver-spiral.jpg",
+        "/images/silver-spiral-b.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "两枚涡纹，一枚弯钩，可以分开戴。",
+      "description": "锻打之后盘出的涡纹，疏密是苏银自己的尺寸。银会氧化变暗，用软布擦即可，不要用粗砂。一组三件。",
+      "leadTime": "约 2 周",
+      "edition": "不翻模，每组略有差别",
+      "specs": [
+        {
+          "label": "组合",
+          "value": "涡纹两枚 · 弯钩一件"
+        },
+        {
+          "label": "材质",
+          "value": "足银锻造"
+        }
+      ],
+      "verification": {
+        "material": "银料成色随件说明，演示数据记为足银锻造。",
+        "handmade": "锻打与盘丝由苏银完成。",
+        "original": "涡纹尺寸已登记，编号 NV-SY-2407。"
+      }
+    },
+    {
+      "id": "moon-collar",
+      "title": "月牙银项饰",
+      "price": 2680,
+      "categoryId": "silver",
+      "creatorId": "su-yin",
+      "images": [
+        "/images/silver-collar.jpg"
+      ],
+      "certifications": [
+        "material",
+        "handmade",
+        "original"
+      ],
+      "summary": "月牙项圈，周围一圈涡纹银片。",
+      "description": "这件更接近可以留下来的项饰，而不是日常细链。表面有时间留下的颜色，不是电镀新品。喜欢亮面的人，可以先看涡纹那一组。",
+      "leadTime": "约 3 周，支持尺寸沟通",
+      "edition": "单件",
+      "specs": [
+        {
+          "label": "类型",
+          "value": "项饰"
+        },
+        {
+          "label": "材质",
+          "value": "银 · 錾刻与盘丝"
+        }
+      ],
+      "verification": {
+        "material": "银料成色随件说明。表面颜色来自时间和手工，不是做旧药水的统一效果。",
+        "handmade": "錾刻与盘丝为手工。",
+        "original": "月牙与涡纹的组合已登记，编号 NV-SY-2416。"
+      }
+    }
+  ],
+  "membership": {
+    "headline": "把位置留给认真做东西的人",
+    "intro": "November 的会员不是折扣堆叠。它让创作者少被仿货打断，也让喜欢手作的人更早看见真正的新作。",
+    "note": "开通即将开放。此页为演示，不会扣款。",
+    "tiers": [
+      {
+        "id": "traveler",
+        "name": "旅人",
+        "priceLabel": "免费",
+        "blurb": "先看，再决定要不要走近。",
+        "recommended": false,
+        "perks": [
+          "浏览全部甄选",
+          "收藏器物与创作者",
+          "查看材料、手作与原创说明"
+        ]
+      },
+      {
+        "id": "maker",
+        "name": "手作会员",
+        "priceLabel": "¥199 / 年",
+        "blurb": "适合已经知道自己在找什么的人。",
+        "recommended": true,
+        "perks": [
+          "新品提前 48 小时可见",
+          "创作者手记",
+          "部分器物的沟通优先"
+        ]
+      },
+      {
+        "id": "collector",
+        "name": "藏家",
+        "priceLabel": "¥699 / 年",
+        "blurb": "名额少，留给想走近工作室的人。",
+        "recommended": false,
+        "perks": [
+          "工作室拜访名额（每季有限）",
+          "定制需求优先转达创作者",
+          "年度器物目录"
+        ]
+      }
+    ]
+  }
+}

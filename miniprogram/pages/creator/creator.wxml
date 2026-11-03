@@ -1,0 +1,31 @@
+<view class="page sub" wx:if="{{missing}}">
+  <view class="h1">没有找到这位创作者</view>
+</view>
+<view class="page sub" wx:else>
+  <image class="cover-img" src="{{creator.cover}}" mode="aspectFill" />
+  <view class="head">
+    <image src="{{creator.avatar}}" mode="aspectFill" />
+    <view>
+      <view class="h1" style="font-size: 48rpx;">{{creator.name}}</view>
+      <view class="muted">{{creator.city}} · {{creator.craft}} · {{creator.years}} 年</view>
+    </view>
+  </view>
+  <view class="story" style="font-weight: 500;">{{creator.headline}}</view>
+  <view class="story" wx:for="{{creator.story}}" wx:key="*this">{{item}}</view>
+
+  <view class="row"><view class="h2">制作过程</view></view>
+  <view wx:for="{{creator.process}}" wx:key="caption">
+    <image class="shot" src="{{item.image}}" mode="aspectFill" />
+    <view class="body">{{item.caption}}</view>
+  </view>
+
+  <view class="row">
+    <view class="h2">在售作品</view>
+    <view class="muted">{{works.length}} 件</view>
+  </view>
+  <view class="grid">
+    <view class="cell" wx:for="{{works}}" wx:key="id">
+      <product-card product="{{item}}" bind:open="onOpen" bind:heart="onHeart" />
+    </view>
+  </view>
+</view>

@@ -1,0 +1,13 @@
+<view class="pcard">
+  <view class="photo" bindtap="onOpen">
+    <image src="{{product.image}}" mode="aspectFill" lazy-load />
+    <view class="badge" wx:if="{{product.floatLabel}}">{{product.floatLabel}}</view>
+    <view class="heart {{product.wished ? 'on' : ''}}" catchtap="onHeart">{{product.wished ? '♥' : '♡'}}</view>
+  </view>
+  <view class="meta" bindtap="onOpen">
+    <view class="title">{{product.title}}</view>
+    <view class="muted">{{product.meta}}</view>
+    <view class="price">{{product.priceText}}</view>
+    <view class="cert" wx:if="{{product.certLine}}">{{product.certLine}}</view>
+  </view>
+</view>
