@@ -2,10 +2,10 @@ Component({
   data: {
     selected: 0,
     list: [
-      { pagePath: '/pages/home/home', text: '首页' },
-      { pagePath: '/pages/explore/explore', text: '发现' },
-      { pagePath: '/pages/membership/membership', text: '会员' },
-      { pagePath: '/pages/me/me', text: '我的' }
+      { pagePath: '/pages/home/home', text: '首页', icon: '/icons/home.png', iconOn: '/icons/home-on.png' },
+      { pagePath: '/pages/explore/explore', text: '发现', icon: '/icons/compass.png', iconOn: '/icons/compass-on.png' },
+      { pagePath: '/pages/messages/messages', text: '消息', icon: '/icons/message.png', iconOn: '/icons/message-on.png' },
+      { pagePath: '/pages/me/me', text: '我的', icon: '/icons/user.png', iconOn: '/icons/user-on.png' }
     ]
   },
   methods: {

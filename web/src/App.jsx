@@ -1,11 +1,12 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Shell from './components/Shell'
 import Creator from './pages/Creator'
 import Explore from './pages/Explore'
 import Home from './pages/Home'
 import Me from './pages/Me'
-import Membership from './pages/Membership'
+import Messages from './pages/Messages'
 import Product from './pages/Product'
+import Thread from './pages/Thread'
 
 function Missing() {
   return (
@@ -26,7 +27,9 @@ export default function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/creator/:id" element={<Creator />} />
-        <Route path="/membership" element={<Membership />} />
+        <Route path="/messages" element={<Messages />} />
+        <Route path="/messages/:id" element={<Thread />} />
+        <Route path="/membership" element={<Navigate to="/me" replace />} />
         <Route path="/me" element={<Me />} />
         <Route path="*" element={<Missing />} />
       </Route>

@@ -1,0 +1,76 @@
+.inbox-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+.live-pill {
+  flex: none;
+  margin-top: 8rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+  background: #f2f2f2;
+  color: #6a6a6a;
+  font-size: 22rpx;
+}
+.live-pill.on {
+  background: rgba(240, 101, 67, 0.12);
+  color: #d45332;
+}
+.search {
+  margin: 20rpx 0 8rpx;
+  height: 72rpx;
+  padding: 0 20rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 16rpx;
+  background: #f7f7f7;
+}
+.line {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 24rpx 0;
+  border-top: 1rpx solid #ebebeb;
+}
+.line image, .avatar-fallback {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  flex: none;
+}
+.avatar-fallback {
+  background: #f2f2f2;
+  color: #f06543;
+  text-align: center;
+  line-height: 96rpx;
+  font-weight: 700;
+}
+.grow { flex: 1; min-width: 0; }
+.clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8rpx;
+}
+.dot {
+  width: 12rpx;
+  height: 12rpx;
+  border-radius: 50%;
+  background: #f06543;
+}
+.badge {
+  min-width: 32rpx;
+  height: 32rpx;
+  padding: 0 8rpx;
+  border-radius: 999rpx;
+  background: #f06543;
+  color: #fff;
+  font-size: 20rpx;
+  line-height: 32rpx;
+  text-align: center;
+}

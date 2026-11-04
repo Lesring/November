@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/explore/explore",
-    "pages/membership/membership",
+    "pages/messages/messages",
+    "pages/thread/thread",
     "pages/me/me",
     "pages/product/product",
     "pages/creator/creator"
@@ -23,7 +24,7 @@
     "list": [
       { "pagePath": "pages/home/home", "text": "首页" },
       { "pagePath": "pages/explore/explore", "text": "发现" },
-      { "pagePath": "pages/membership/membership", "text": "会员" },
+      { "pagePath": "pages/messages/messages", "text": "消息" },
       { "pagePath": "pages/me/me", "text": "我的" }
     ]
   },

@@ -17,6 +17,7 @@ export function StoreProvider({ children }) {
   const [wishlist, setWishlist] = useState(() => read(WISH_KEY, []))
   const [cart, setCart] = useState(() => read(CART_KEY, []))
   const [toast, setToast] = useState(null)
+  const [unread, setUnread] = useState(0)
   const timer = useRef(null)
 
   useEffect(() => {
@@ -68,8 +69,18 @@ export function StoreProvider({ children }) {
       setCart((prev) => prev.filter((item) => item.id !== id))
     }
 
-    return { wishlist, cart, toast, notify, toggleWish, addToCart, removeFromCart }
-  }, [wishlist, cart, toast])
+    return {
+      wishlist,
+      cart,
+      toast,
+      unread,
+      setUnread,
+      notify,
+      toggleWish,
+      addToCart,
+      removeFromCart
+    }
+  }, [wishlist, cart, toast, unread])
 
   return <StoreContext.Provider value={api}>{children}</StoreContext.Provider>
 }

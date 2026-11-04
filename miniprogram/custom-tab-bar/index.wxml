@@ -6,7 +6,6 @@
     data-index="{{index}}"
     bindtap="onTap"
   >
-    <view class="dot"></view>
-    <text>{{item.text}}</text>
+    <image class="ico" src="{{selected === index ? item.iconOn : item.icon}}" />
   </view>
 </view>

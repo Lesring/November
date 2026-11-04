@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="inbox-head">
+    <view>
+      <view class="h1">消息</view>
+      <view class="lede">和创作者、认证核对的往来。会话按设备隔离。</view>
+    </view>
+    <view class="live-pill {{online ? 'on' : ''}}">{{online ? '已同步' : '本地演示'}}</view>
+  </view>
+  <input class="search" placeholder="搜索创作者或内容" value="{{query}}" bindinput="onQuery" />
+  <view wx:if="{{loading}}" class="muted">正在同步会话…</view>
+  <view class="line" wx:for="{{threads}}" wx:key="id" data-id="{{item.id}}" bindtap="onOpen">
+    <image wx:if="{{item.hasAvatar}}" src="{{item.avatar}}" mode="aspectFill" />
+    <view wx:else class="avatar-fallback">{{item.initial}}</view>
+    <view class="grow">
+      <view style="font-weight: 600;">{{item.name}}</view>
+      <view class="muted clamp">{{item.preview}}</view>
+    </view>
+    <view class="side">
+      <view class="small">{{item.time}}</view>
+      <view wx:if="{{item.unreadCount > 0}}" class="badge">{{item.unreadCount > 99 ? '99+' : item.unreadCount}}</view>
+      <view wx:elif="{{item.unread}}" class="dot"></view>
+    </view>
+  </view>
+</view>
