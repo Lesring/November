@@ -3,9 +3,17 @@
   "private": true,
   "description": "November 中国手作甄选 — 演示原型",
   "scripts": {
-    "sync": "node scripts/sync-catalog.js",
+    "sync": "node scripts/seed-remote.js",
+    "seed": "node scripts/seed-remote.js",
+    "api": "node server/index.js",
     "dev": "npm run dev --prefix web",
     "build": "npm run build --prefix web",
     "check:mp": "node scripts/check-miniprogram.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1161.0",
+    "@aws-sdk/s3-request-presigner": "^3.1161.0",
+    "pg": "^8.23.1",
+    "ws": "^8.22.1"
   }
 }

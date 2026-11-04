@@ -1,0 +1,50 @@
+<view class="page thread-page" wx:if="{{missing}}">
+  <view class="h1">没有这封消息</view>
+</view>
+<view class="page thread-page" wx:elif="{{loading}}">
+  <view class="muted">正在打开会话…</view>
+</view>
+<view class="page thread-page" wx:else>
+  <view class="back" bindtap="onBack"><image src="/icons/back.png" mode="aspectFit" /></view>
+  <view class="who">
+    <image wx:if="{{hasAvatar}}" src="{{avatar}}" mode="aspectFill" />
+    <view wx:else class="avatar-fallback">{{initial}}</view>
+    <view>
+      <view class="name">{{name}}</view>
+      <view class="small">{{typing ? '对方正在输入…' : (offline ? '本地演示' : '仅会话成员可见')}}</view>
+    </view>
+  </view>
+  <view
+    wx:for="{{lines}}"
+    wx:key="id"
+    class="bubble-row {{item.from === 'me' ? 'me' : 'them'}}"
+  >
+    <view class="bubble {{item.from === 'me' ? 'me' : ''}} {{item.kind === 'image' ? 'media' : ''}}">
+      <image
+        wx:if="{{item.kind === 'image' && item.url}}"
+        class="bubble-image"
+        src="{{item.url}}"
+        mode="widthFix"
+        data-url="{{item.url}}"
+        bindtap="onPreview"
+      />
+      <view wx:elif="{{item.kind === 'file'}}" class="bubble-file">
+        <view class="file-name">{{item.fileName || item.text}}</view>
+        <view class="small" wx:if="{{item.byteSize}}">{{item.byteSize}} B</view>
+      </view>
+      <text wx:else>{{item.text}}</text>
+      <view class="msg-time" wx:if="{{item.time}}">{{item.time}}</view>
+    </view>
+  </view>
+  <view wx:if="{{typing}}" class="bubble-row them">
+    <view class="bubble typing">对方正在输入…</view>
+  </view>
+  <view class="reply-bar">
+    <view class="tool" bindtap="onPickImage">图</view>
+    <view class="tool" bindtap="onPickFile">件</view>
+    <input value="{{draft}}" placeholder="输入消息" bindinput="onDraft" confirm-type="send" bindconfirm="onSend" />
+    <view class="send" bindtap="onSend" aria-label="发送">
+      <image src="/icons/send.png" mode="aspectFit" />
+    </view>
+  </view>
+</view>

@@ -1,24 +1,45 @@
 import { useEffect } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import SearchBar from './SearchBar'
+import { CompassIcon, HomeIcon, MessageIcon, UndoIcon, UserIcon } from './Icons'
+import { chat } from '../lib/chat'
 import { useStore } from '../store'
 
 const TABS = [
-  { to: '/', label: '首页', end: true },
-  { to: '/explore', label: '发现' },
-  { to: '/membership', label: '会员' },
-  { to: '/me', label: '我的' }
+  { to: '/', label: '首页', end: true, icon: HomeIcon },
+  { to: '/explore', label: '发现', icon: CompassIcon },
+  { to: '/messages', label: '消息', icon: MessageIcon },
+  { to: '/me', label: '我的', icon: UserIcon }
 ]
 
 export default function Shell() {
   const location = useLocation()
   const navigate = useNavigate()
-  const { toast } = useStore()
-  const isTab = TABS.some((tab) => (tab.end ? location.pathname === '/' : location.pathname.startsWith(tab.to)))
+  const { toast, unread, setUnread } = useStore()
+  const isTab = TABS.some((tab) => location.pathname === tab.to)
+  const onThread = location.pathname.startsWith('/messages/')
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [location.pathname])
+
+  useEffect(() => {
+    let alive = true
+    chat
+      .ensureSession()
+      .then(() => chat.listConversations())
+      .then(() => {
+        if (alive) setUnread(chat.getUnread())
+      })
+      .catch(() => {})
+    const unsubscribe = chat.subscribe((event) => {
+      if (event.type === 'unread' && alive) setUnread(event.unread || 0)
+    })
+    return () => {
+      alive = false
+      unsubscribe()
+    }
+  }, [setUnread])
 
   return (
     <div className="app">
@@ -47,8 +68,8 @@ export default function Shell() {
             November
           </Link>
         ) : (
-          <button type="button" className="back" onClick={() => navigate(-1)}>
-            返回
+          <button type="button" className="back icon-btn" onClick={() => navigate(-1)} aria-label="返回">
+            <UndoIcon />
           </button>
         )}
         {!isTab ? (
@@ -60,19 +81,32 @@ export default function Shell() {
         )}
       </header>
 
-      <main className={isTab ? 'shell-main with-tab' : 'shell-main'}>
+      <main
+        className={
+          (isTab ? 'shell-main with-tab' : 'shell-main') + (onThread ? ' thread-shell' : '')
+        }
+      >
         <Outlet />
-        <footer className="site-foot">
-          <p>手作商品不支持无理由退货 · 原创作品受保护</p>
-          <p>November 十一月 · 演示原型，无支付、无登录</p>
-        </footer>
+        {onThread ? null : (
+          <footer className="site-foot">
+            <p>手作商品不支持无理由退货 · 原创作品受保护</p>
+            <p>November 十一月 · 演示原型，无支付、无登录</p>
+          </footer>
+        )}
       </main>
 
       {isTab ? (
         <nav className="tabbar" aria-label="底部导航">
           {TABS.map((tab) => (
-            <NavLink key={tab.to} to={tab.to} end={tab.end}>
-              <span className="dot" />
+            <NavLink key={tab.to} to={tab.to} end={tab.end} className="tab-link">
+              <span className="tab-icon-wrap">
+                <tab.icon />
+                {tab.to === '/messages' && unread > 0 ? (
+                  <i className="tab-badge" aria-label={'未读 ' + unread}>
+                    {unread > 99 ? '99+' : unread}
+                  </i>
+                ) : null}
+              </span>
               {tab.label}
             </NavLink>
           ))}

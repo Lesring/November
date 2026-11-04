@@ -1,6 +1,24 @@
-import catalog from '../../../shared/catalog.json'
+export const catalog = {
+  dataset: '',
+  brand: {},
+  categories: [],
+  certifications: [],
+  rights: {},
+  collections: [],
+  creators: [],
+  products: [],
+  customIds: [],
+  program: {},
+  posts: [],
+  messages: [],
+  membership: { tiers: [] }
+}
 
-export { catalog }
+export function hydrate(data) {
+  Object.keys(data).forEach((key) => {
+    catalog[key] = data[key]
+  })
+}
 
 export function formatPrice(n) {
   return '¥' + Number(n).toLocaleString('zh-CN')
@@ -43,12 +61,14 @@ export function productText(product) {
     .join(' ')
 }
 
-export function filterProducts({ q = '', categoryId = 'all', certs = [], sort = 'featured' } = {}) {
+export function filterProducts({ q = '', categoryId = 'all', certs = [], sort = 'featured', customOnly = false } = {}) {
   const query = q.trim()
+  const customIds = catalog.customIds || []
   let list = catalog.products
     .map((product, index) => ({ product, index }))
     .filter(({ product }) => {
       if (categoryId && categoryId !== 'all' && product.categoryId !== categoryId) return false
+      if (customOnly && !customIds.includes(product.id)) return false
       if (certs.length && !certs.some((id) => product.certifications.includes(id))) return false
       if (query && !productText(product).includes(query)) return false
       return true
