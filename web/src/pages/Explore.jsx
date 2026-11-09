@@ -139,9 +139,9 @@ export default function Explore() {
           </button>
         </div>
       ) : (
-        <div className="product-grid">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+        <div className="product-grid swap" key={products.map((product) => product.id).join('|')}>
+          {products.map((product, index) => (
+            <ProductCard key={product.id} product={product} priority={index < 2} />
           ))}
         </div>
       )}

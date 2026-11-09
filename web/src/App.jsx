@@ -1,12 +1,14 @@
+import { lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Shell from './components/Shell'
-import Creator from './pages/Creator'
-import Explore from './pages/Explore'
 import Home from './pages/Home'
-import Me from './pages/Me'
-import Messages from './pages/Messages'
-import Product from './pages/Product'
-import Thread from './pages/Thread'
+
+const Explore = lazy(() => import('./pages/Explore'))
+const Product = lazy(() => import('./pages/Product'))
+const Creator = lazy(() => import('./pages/Creator'))
+const Messages = lazy(() => import('./pages/Messages'))
+const Thread = lazy(() => import('./pages/Thread'))
+const Me = lazy(() => import('./pages/Me'))
 
 function Missing() {
   return (
