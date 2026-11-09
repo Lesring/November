@@ -9,6 +9,14 @@ export default function Messages() {
   const [query, setQuery] = useState('')
   const [loading, setLoading] = useState(true)
   const [online, setOnline] = useState(false)
+  const [draft, setDraft] = useState(() => {
+    try {
+      const raw = sessionStorage.getItem('november-consult-draft')
+      return raw ? JSON.parse(raw) : null
+    } catch (_) {
+      return null
+    }
+  })
 
   useEffect(() => {
     let alive = true
@@ -81,13 +89,38 @@ export default function Messages() {
         <div>
           <h1>消息</h1>
           <p className="lede">
-            和创作者、认证核对的往来。会话按设备隔离，附件走私有通道。
+            演示收件箱。会话保存在服务里，回复是自动写的，不会送到创作者本人。
           </p>
         </div>
         <span className={'live-pill ' + (online ? 'on' : '')} aria-live="polite">
           {online ? '实时已连接' : '重连中'}
         </span>
       </div>
+
+      {draft ? (
+        <aside className="consult-draft">
+          <p className="kicker">还没送出</p>
+          <strong>
+            给{draft.creator} · {draft.title}
+          </strong>
+          <p>{draft.note}</p>
+          <p className="muted small">这句话只存在这台设备上，没有送给创作者。下面的会话是演示，回复是自动写的。</p>
+          <button
+            type="button"
+            className="btn text"
+            onClick={() => {
+              try {
+                sessionStorage.removeItem('november-consult-draft')
+              } catch (_) {
+                /* ignore */
+              }
+              setDraft(null)
+            }}
+          >
+            清掉这句话
+          </button>
+        </aside>
+      ) : null}
 
       <label className="inbox-search">
         <span className="sr-only">搜索会话</span>

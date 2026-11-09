@@ -22,7 +22,7 @@ export default function Creator() {
   return (
     <article className="creator">
       <div className="cover">
-        <img src={creator.cover} alt="" />
+        <img src={creator.cover} alt="" fetchPriority="high" decoding="async" />
       </div>
       <div className="creator-head">
         <img className="avatar" src={creator.avatar} alt="" />
@@ -45,7 +45,7 @@ export default function Creator() {
         <div className="process">
           {creator.process.map((step) => (
             <figure key={step.caption}>
-              <img src={step.image} alt="" />
+              <img src={step.image} alt="" loading="lazy" decoding="async" />
               <figcaption>{step.caption}</figcaption>
             </figure>
           ))}

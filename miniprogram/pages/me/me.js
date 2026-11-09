@@ -30,7 +30,7 @@ Page({
     }
   },
   goMember() {
-    wx.switchTab({ url: '/pages/membership/membership' })
+    wx.showToast({ title: '会员还没有开放', icon: 'none' })
   },
   goProduct(event) {
     wx.navigateTo({ url: '/pages/product/product?id=' + event.currentTarget.dataset.id })

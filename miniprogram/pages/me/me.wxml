@@ -9,10 +9,9 @@
 
   <view class="banner" bindtap="goMember">
     <view>
-      <view style="font-weight: 600;">会员尚未加入</view>
-      <view class="muted">手作会员 ¥199 / 年 · 新品提前可见</view>
+      <view style="font-weight: 600;">会员还没有开放</view>
+      <view class="muted">不收款。先看创作者和认证说明。</view>
     </view>
-    <view class="link">去看看</view>
   </view>
 
   <view class="row">

@@ -19,13 +19,13 @@ export default function Me() {
         </div>
       </div>
 
-      <Link to="/membership" className="member-banner">
+      <section className="member-banner quiet">
         <div>
-          <strong>会员尚未加入</strong>
-          <p>手作会员 ¥199 / 年 · 新品提前可见</p>
+          <strong>会员还没有开放</strong>
+          <p>这里不收款。可以先看创作者和认证说明。</p>
         </div>
-        <span>去看看</span>
-      </Link>
+        <Link to="/explore">去发现</Link>
+      </section>
 
       <section className="panel">
         <div className="section-head">

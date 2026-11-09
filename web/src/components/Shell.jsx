@@ -1,8 +1,9 @@
-import { useEffect } from 'react'
+import { Suspense, useEffect, useSyncExternalStore } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import { CompassIcon, HomeIcon, MessageIcon, UndoIcon, UserIcon } from './Icons'
 import { chat } from '../lib/chat'
+import { catalogPhase, loadCatalog, subscribeCatalog } from '../lib/catalog'
 import { useStore } from '../store'
 
 const TABS = [
@@ -16,8 +17,15 @@ export default function Shell() {
   const location = useLocation()
   const navigate = useNavigate()
   const { toast, unread, setUnread } = useStore()
+  const phase = useSyncExternalStore(subscribeCatalog, catalogPhase, catalogPhase)
   const isTab = TABS.some((tab) => location.pathname === tab.to)
   const onThread = location.pathname.startsWith('/messages/')
+  const ready = phase.startsWith('ready')
+  const catalogError = phase === 'error'
+
+  useEffect(() => {
+    loadCatalog().catch(() => {})
+  }, [])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -86,12 +94,32 @@ export default function Shell() {
           (isTab ? 'shell-main with-tab' : 'shell-main') + (onThread ? ' thread-shell' : '')
         }
       >
-        <Outlet />
-        {onThread ? null : (
-          <footer className="site-foot">
-            <p>手作商品不支持无理由退货 · 原创作品受保护</p>
-            <p>November 十一月 · 演示原型，无支付、无登录</p>
-          </footer>
+        {catalogError && !ready ? (
+          <div className="empty">
+            <h1>目录没有连上</h1>
+            <p>页面可以打开，器物数据还没到。请确认本机的目录服务已启动。</p>
+            <button
+              type="button"
+              className="btn primary"
+              onClick={() => {
+                loadCatalog().catch(() => {})
+              }}
+            >
+              再试一次
+            </button>
+          </div>
+        ) : (
+          <Suspense fallback={<div className="skeleton-page" aria-busy="true"><span className="sr-only">正在打开这一页</span></div>}>
+            <div key={location.pathname} className="view">
+              <Outlet />
+              {onThread ? null : (
+                <footer className="site-foot">
+                  <p>手作商品不支持无理由退货 · 原创作品受保护</p>
+                  <p>November 十一月 · 演示原型，无支付、无登录</p>
+                </footer>
+              )}
+            </div>
+          </Suspense>
         )}
       </main>
 

@@ -36,6 +36,7 @@ const server = http.createServer(async (req, res) => {
         return
       }
       const catalog = await loadCatalog()
+      res.setHeader('Cache-Control', 'private, max-age=30')
       sendJson(res, 200, catalog)
     } catch (error) {
       sendJson(res, 500, { error: error.message })

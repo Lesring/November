@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { catalog, certMeta, creatorById, formatPrice } from '../lib/catalog'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { catalog, certMeta, creatorById, formatPrice, isDemoCatalog } from '../lib/catalog'
 import { useStore } from '../store'
 
 export default function Product() {
   const { id } = useParams()
+  const navigate = useNavigate()
   const product = catalog.products.find((item) => item.id === id)
   const [index, setIndex] = useState(0)
   const [consultOpen, setConsultOpen] = useState(false)
@@ -42,13 +43,27 @@ export default function Product() {
   }
 
   function sendConsult() {
-    if (!note.trim()) {
+    const text = note.trim()
+    if (!text) {
       notify('先写一点你想问的')
       return
     }
+    try {
+      sessionStorage.setItem(
+        'november-consult-draft',
+        JSON.stringify({
+          productId: product.id,
+          title: product.title,
+          creator: creator ? creator.name : '创作者',
+          note: text
+        })
+      )
+    } catch (_) {
+      /* ignore */
+    }
     setConsultOpen(false)
     setNote('')
-    notify('咨询已记下（演示，不会真正发送）')
+    navigate('/messages')
   }
 
   return (
@@ -65,7 +80,7 @@ export default function Product() {
               if (dx < -40) next()
             }}
           >
-            <img src={image} alt={`${product.title} 图片 ${index + 1}`} />
+            <img key={image} className="gallery-shot" src={image} alt={`${product.title} 图片 ${index + 1}`} decoding="async" />
             {product.images.length > 1 ? (
               <>
                 <button type="button" className="gal-btn prev" onClick={prev} aria-label="上一张">
@@ -105,6 +120,9 @@ export default function Product() {
 
           <section className="block">
             <h2>认证说明</h2>
+            {isDemoCatalog() ? (
+              <p className="muted small">这些句子来自演示数据，不是已完成的独立核验。</p>
+            ) : null}
             <ul className="cert-list">
               {items.map((cert) => (
                 <li key={cert.id}>
@@ -179,14 +197,14 @@ export default function Product() {
             onClick={(event) => event.stopPropagation()}
           >
             <h2 id="consult-title">咨询{creator ? creator.name : '创作者'}</h2>
-            <p className="muted">演示原型不会真正发送。</p>
+            <p className="muted">这句话不会送给创作者。它只留在这台设备的消息页，方便对照演示会话。</p>
             <textarea
               value={note}
               onChange={(event) => setNote(event.target.value)}
               placeholder="想问尺寸、釉色、工期，或定制的可能…"
             />
             <button type="button" className="btn primary" onClick={sendConsult}>
-              发送咨询
+              留在消息页
             </button>
           </div>
         </div>

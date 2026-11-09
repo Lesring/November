@@ -11,7 +11,7 @@
     <view wx:else class="avatar-fallback">{{initial}}</view>
     <view>
       <view class="name">{{name}}</view>
-      <view class="small">{{typing ? '对方正在输入…' : (offline ? '本地演示' : '仅会话成员可见')}}</view>
+      <view class="small">{{typing ? '对方正在输入…' : '演示会话，不会送到创作者本人'}}</view>
     </view>
   </view>
   <view
