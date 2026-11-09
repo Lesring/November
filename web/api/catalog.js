@@ -1,14 +1,25 @@
-const catalog = require('../src/data/demo-catalog.json')
+const fs = require('fs')
+const path = require('path')
+
+const catalog = JSON.parse(
+  fs.readFileSync(path.join(__dirname, 'demo-catalog.json'), 'utf8')
+)
 
 module.exports = function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Cache-Control', 'public, max-age=60')
   if (req.method === 'OPTIONS') {
-    res.status(204).end()
+    res.statusCode = 204
+    res.end()
     return
   }
   if (req.method !== 'GET') {
-    res.status(405).json({ error: 'Method not allowed' })
+    res.statusCode = 405
+    res.setHeader('Content-Type', 'application/json; charset=utf-8')
+    res.end(JSON.stringify({ error: 'Method not allowed' }))
     return
   }
-  res.status(200).json(catalog)
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  res.end(JSON.stringify(catalog))
 }

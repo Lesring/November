@@ -27,12 +27,13 @@ function mount(data) {
 }
 
 fetch('/v1/catalog')
-  .then((response) => {
+  .then(async (response) => {
     if (!response.ok) throw new Error('catalog')
+    const type = response.headers.get('content-type') || ''
+    if (!type.includes('application/json')) throw new Error('catalog')
     return response.json()
   })
   .then(mount)
   .catch(() => {
-    // 静态托管（Vercel 等）没有 API 时，用仓库演示目录
     mount(demoCatalog)
   })
