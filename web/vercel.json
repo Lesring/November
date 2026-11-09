@@ -1,5 +1,14 @@
 {
   "rewrites": [
-    { "source": "/v1/catalog", "destination": "/api/catalog" }
+    { "source": "/v1/catalog", "destination": "/v1/catalog.json" }
+  ],
+  "headers": [
+    {
+      "source": "/v1/catalog.json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
   ]
 }

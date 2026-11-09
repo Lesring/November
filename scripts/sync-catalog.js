@@ -21,8 +21,8 @@ fs.writeFileSync(
 fs.mkdirSync(path.join(root, 'web/src/data'), { recursive: true })
 fs.writeFileSync(path.join(root, 'web/src/data/demo-catalog.json'), json)
 
-fs.mkdirSync(path.join(root, 'web/api'), { recursive: true })
-fs.writeFileSync(path.join(root, 'web/api/demo-catalog.json'), json)
+fs.mkdirSync(path.join(root, 'web/public/v1'), { recursive: true })
+fs.writeFileSync(path.join(root, 'web/public/v1/catalog.json'), json)
 
 
 const srcDir = path.join(root, 'shared/images')
