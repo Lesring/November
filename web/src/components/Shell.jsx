@@ -64,8 +64,8 @@ export default function Shell() {
             ))}
           </nav>
           <SearchBar compact />
-          <NavLink to="/me" className="nav-me">
-            我的
+          <NavLink to="/me" className="nav-me" aria-label="我的">
+            <UserIcon />
           </NavLink>
         </div>
       </header>
@@ -84,9 +84,7 @@ export default function Shell() {
           <Link to="/" className="wordmark small">
             November
           </Link>
-        ) : (
-          <span className="mobile-tag">十一月</span>
-        )}
+        ) : null}
       </header>
 
       <main
@@ -126,7 +124,13 @@ export default function Shell() {
       {isTab ? (
         <nav className="tabbar" aria-label="底部导航">
           {TABS.map((tab) => (
-            <NavLink key={tab.to} to={tab.to} end={tab.end} className="tab-link">
+            <NavLink
+              key={tab.to}
+              to={tab.to}
+              end={tab.end}
+              className={tab.to === '/me' ? 'tab-link icon-only' : 'tab-link'}
+              aria-label={tab.to === '/me' ? tab.label : undefined}
+            >
               <span className="tab-icon-wrap">
                 <tab.icon />
                 {tab.to === '/messages' && unread > 0 ? (
@@ -135,7 +139,7 @@ export default function Shell() {
                   </i>
                 ) : null}
               </span>
-              {tab.label}
+              {tab.to === '/me' ? <span className="sr-only">{tab.label}</span> : tab.label}
             </NavLink>
           ))}
         </nav>

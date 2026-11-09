@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
+import SearchBar from '../components/SearchBar'
 import { catalog, filterProducts } from '../lib/catalog'
 
 const SORTS = [
@@ -54,31 +55,11 @@ export default function Explore() {
   return (
     <div className="explore">
       <h1>发现</h1>
-      <form
-        className="search"
-        role="search"
-        onSubmit={(event) => {
-          event.preventDefault()
-          writeParams({ q: q.trim() })
-        }}
-      >
-        <label className="sr-only" htmlFor="explore-search">
-          搜索
-        </label>
-        <input
-          id="explore-search"
-          value={q}
-          onChange={(event) => setQ(event.target.value)}
-          placeholder="搜索器物、材质或创作者"
-          enterKeyHint="search"
-        />
-        <button className="search-orb" type="submit" aria-label="搜索">
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <circle cx="11" cy="11" r="6.25" fill="none" stroke="currentColor" strokeWidth="2" />
-            <path d="M16 16.5 20.5 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        </button>
-      </form>
+      <SearchBar
+        initial={searchParams.get('q') || ''}
+        onChange={setQ}
+        onSubmit={(query) => writeParams({ q: query })}
+      />
 
       <div className="chips" aria-label="品类">
         <button

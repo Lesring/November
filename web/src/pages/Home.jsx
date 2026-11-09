@@ -32,9 +32,7 @@ export default function Home() {
 
       <div className="opening">
         <section className="hero">
-          <p className="kicker">
-            {catalog.brand.nameZh} · {catalog.brand.tagline}
-          </p>
+          <p className="kicker">{catalog.brand.tagline}</p>
           <h1>{catalog.brand.promise}</h1>
           <p className="lede">{catalog.brand.lede}</p>
           <SearchBar />
