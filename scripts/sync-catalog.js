@@ -18,6 +18,13 @@ fs.writeFileSync(
   banner + 'module.exports = ' + json.trim() + '\n'
 )
 
+fs.mkdirSync(path.join(root, 'web/src/data'), { recursive: true })
+fs.writeFileSync(path.join(root, 'web/src/data/demo-catalog.json'), json)
+
+fs.mkdirSync(path.join(root, 'web/api'), { recursive: true })
+fs.writeFileSync(path.join(root, 'web/api/demo-catalog.json'), json)
+
+
 const srcDir = path.join(root, 'shared/images')
 const dests = [
   path.join(root, 'web/public/images'),
@@ -31,4 +38,4 @@ for (const dest of dests) {
   }
 }
 
-console.log('已同步 catalog.js 与图片到 web/public/images、miniprogram/images')
+console.log('已同步 catalog 与图片到 web/src/data、web/public/images、miniprogram')
