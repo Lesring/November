@@ -31,9 +31,9 @@ export function HeartIcon({ filled }) {
   )
 }
 
-export function SearchIcon() {
+export function SearchIcon({ size = 20 }) {
   return (
-    <Icon>
+    <Icon size={size}>
       <circle cx="11" cy="11" r="8" />
       <path d="m21 21-4.3-4.3" />
     </Icon>

@@ -197,15 +197,17 @@ h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 500; letter-spacing: -0.02e
   height: 40px;
   border: 0;
   border-radius: 50%;
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--ink);
+  background: transparent;
+  color: var(--muted);
+  box-shadow: none;
   display: grid;
   place-items: center;
   flex: none;
 }
-.search-orb:hover { background: var(--surface-strong); }
+.search-orb:hover { background: var(--surface-strong); color: var(--ink); }
 .search-orb:active { background: var(--surface-strong); color: var(--ink); }
+.desktop-nav .search.collapsed,
+.desktop-nav .nav-me:not(.active) { color: var(--muted); }
 
 .chips {
   display: flex;
