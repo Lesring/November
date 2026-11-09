@@ -8,27 +8,31 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { StoreProvider } from './store'
+import demoCatalog from './data/demo-catalog.json'
 import './styles.css'
 
 const rootEl = document.getElementById('root')
+
+function mount(data) {
+  hydrate(data)
+  createRoot(rootEl).render(
+    <React.StrictMode>
+      <BrowserRouter>
+        <StoreProvider>
+          <App />
+        </StoreProvider>
+      </BrowserRouter>
+    </React.StrictMode>
+  )
+}
 
 fetch('/v1/catalog')
   .then((response) => {
     if (!response.ok) throw new Error('catalog')
     return response.json()
   })
-  .then((data) => {
-    hydrate(data)
-    createRoot(rootEl).render(
-      <React.StrictMode>
-        <BrowserRouter>
-          <StoreProvider>
-            <App />
-          </StoreProvider>
-        </BrowserRouter>
-      </React.StrictMode>
-    )
-  })
+  .then(mount)
   .catch(() => {
-    rootEl.textContent = '没有连上目录。请在项目根目录运行 npm run api'
+    // 静态托管（Vercel 等）没有 API 时，用仓库演示目录
+    mount(demoCatalog)
   })
