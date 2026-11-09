@@ -197,13 +197,15 @@ h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 500; letter-spacing: -0.02e
   height: 40px;
   border: 0;
   border-radius: 50%;
-  background: var(--ink);
-  color: #fff;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
   display: grid;
   place-items: center;
   flex: none;
 }
-.search-orb:active { background: var(--primary-active); }
+.search-orb:hover { background: var(--surface-strong); }
+.search-orb:active { background: var(--surface-strong); color: var(--ink); }
 
 .chips {
   display: flex;
@@ -225,7 +227,9 @@ h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 500; letter-spacing: -0.02e
   font-size: 14px;
   font-weight: 500;
 }
-.chip.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+.chip.on { background: var(--surface); color: var(--ink); border-color: var(--ink); }
+.chip:hover { background: var(--surface-strong); }
+.chip.on:hover { background: var(--surface); }
 
 .sort-row {
   display: flex;
@@ -486,8 +490,16 @@ h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 500; letter-spacing: -0.02e
   text-decoration: none;
 }
 .btn.primary { background: var(--primary); color: #fff; }
+.btn.primary:hover { background: var(--primary-active); }
 .btn.primary:active { background: var(--primary-active); }
-.btn.secondary { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.btn.secondary { background: var(--surface); color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.btn.secondary:hover { background: var(--surface-strong); }
+.btn:disabled, .chip:disabled, .search-orb:disabled {
+  background: var(--surface-soft);
+  color: var(--muted);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  cursor: not-allowed;
+}
 .btn.text {
   background: transparent;
   color: var(--ink);
@@ -677,8 +689,9 @@ button.member-banner {
   transform: translateX(-50%);
   z-index: 80;
   max-width: calc(100% - 32px);
-  background: var(--ink);
-  color: #fff;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--hairline);
   border-radius: 999px;
   padding: 12px 16px;
   font-size: 14px;
@@ -824,8 +837,9 @@ button.member-banner {
   border-radius: 999px;
 }
 .xhs-tabs button.on {
-  background: var(--ink);
-  color: #fff;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
   font-weight: 600;
 }
 .xhs {
