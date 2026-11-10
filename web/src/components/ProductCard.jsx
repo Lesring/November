@@ -3,19 +3,24 @@ import { certMeta, creatorById, formatPrice } from '../lib/catalog'
 import { useStore } from '../store'
 import { HeartIcon } from './Icons'
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, priority = false }) {
   const { wishlist, toggleWish } = useStore()
   const creator = creatorById(product.creatorId)
-  const { float, rest } = certMeta(product)
+  const { items } = certMeta(product)
   const wished = wishlist.includes(product.id)
 
   return (
     <article className="pcard">
       <div className="photo">
         <Link to={`/product/${product.id}`}>
-          <img src={product.images[0]} alt={product.title} />
+          <img
+            src={product.images[0]}
+            alt={product.title}
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            fetchPriority={priority ? 'high' : 'auto'}
+          />
         </Link>
-        {float ? <span className="float-badge">{float.label}</span> : null}
         <button
           type="button"
           className={wished ? 'heart on' : 'heart'}
@@ -33,8 +38,8 @@ export default function ProductCard({ product }) {
             {creator.city} · {creator.name}
           </p>
         ) : null}
+        {items.length > 0 ? <p className="cert-line">{items.map((item) => item.label).join(' · ')}</p> : null}
         <p className="price">{formatPrice(product.price)}</p>
-        {rest.length > 0 ? <p className="cert-line">{rest.map((item) => item.label).join(' · ')}</p> : null}
       </Link>
     </article>
   )

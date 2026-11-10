@@ -231,7 +231,7 @@ export default function Thread() {
         )}
         <div>
           <h1>{thread.name}</h1>
-          <p className="muted">{typing ? '对方正在输入…' : '内容加密传输通道 · 仅本会话成员可见'}</p>
+          <p className="muted">{typing ? '对方正在输入…' : '演示会话 · 存在这台服务上，不会送到创作者本人'}</p>
         </div>
       </div>
 
